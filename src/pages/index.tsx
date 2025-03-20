@@ -72,9 +72,12 @@ export default function HomePage({ players, errorMessage }: HomepageProps & { er
 }
 
 export const getStaticProps: GetStaticProps = async () => {
+  const apiBaseUrl =
+  process.env.NEXT_PUBLIC_VERCEL_URL
+    ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api`
+    : "http://localhost:3000/api";
   try {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
-    const response = await fetch(`${apiUrl}/api`);
+    const response = await fetch(apiBaseUrl);
     if (!response.ok) {
       throw new Error('Failed to fetch players');
     }
