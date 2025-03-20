@@ -1,10 +1,18 @@
 import type { NextConfig } from 'next';
+const stylexPlugin = require("@stylexjs/nextjs-plugin");
+
+module.exports = stylexPlugin({
+  rootDir: __dirname,
+})({});
 
 const s3Host = process.env.S3_HOST as string;
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  output: "standalone",
   images: {
+    formats:  ["image/avif", "image/webp"],
+    loader: "default",
     remotePatterns: [
       {
         protocol: "https",
