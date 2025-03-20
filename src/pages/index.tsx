@@ -73,9 +73,10 @@ export default function HomePage({ players, errorMessage }: HomepageProps & { er
 
 export const getStaticProps: GetStaticProps = async () => {
   const baseUrl =
-  process.env.VERCEL_ENV === "production"
-    ? `https://${process.env.VERCEL_URL}/api`
+  process.env.NEXT_PUBLIC_HOST
+    ? `${process.env.NEXT_PUBLIC_HOST}/api`
     : "http://localhost:3000/api";
+  console.log("baseUrl:", baseUrl);
   try {
     console.log("Fetching from:", baseUrl);
     const response = await fetch(baseUrl);
