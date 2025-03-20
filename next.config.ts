@@ -1,12 +1,14 @@
 import type { NextConfig } from 'next';
 
+const s3Host = process.env.S3_HOST as string;
+
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   images: {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: process.env.S3_HOST as string,
+        hostname: s3Host,
         pathname: "/**"
       }
     ]
