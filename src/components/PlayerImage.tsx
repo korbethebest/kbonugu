@@ -1,12 +1,18 @@
 import * as styleX from "@stylexjs/stylex";
-import Image from 'next/image'
 
 import SampeImage from "../../public/images/questionMark.png";
 
-function PlayerImage({ correct, answerPlayerImageUrl }: { correct: boolean, answerPlayerImageUrl: string  }) {
+type PlayerImageProps = {
+  correct: boolean;
+  answerPlayerImageUrl: string;
+};
+
+function PlayerImage({ correct, answerPlayerImageUrl }: PlayerImageProps) {
+  const src = correct ? answerPlayerImageUrl : SampeImage.src;
+
   return (
     <div {...styleX.props(imageWrapperStyles.base)}>
-      <Image src={correct ? answerPlayerImageUrl :  SampeImage} width={300} height={376.6} {...styleX.props(imageStyles.base)} alt="KBO player img" />
+      <img src={src} width={300} height={376.6} {...styleX.props(imageStyles.base)} alt="KBO player img" />
     </div>
   );
 }
