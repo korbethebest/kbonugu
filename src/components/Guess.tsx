@@ -18,7 +18,20 @@ type GuessProps = {
   answerPlayer: Player;
 };
 
-function Guess ({index, guessPlayer, answerPlayer}: GuessProps) { 
+function Guess ({index, guessPlayer, answerPlayer}: GuessProps) {
+  const convertTeamNameToEnglish = (teamName: string): string => {
+    const teamMap: Record<string, string> = {
+      "기아": "KIA",
+      "두산": "DOOSAN",
+      "롯데": "LOTTE",
+      "삼성": "SAMSUNG",
+      "키움": "KIWOOM",
+      "한화": "HANWHA",
+    };
+  
+    return teamMap[teamName] || teamName;
+  }
+
   return (
     <div {...styleX.props(wrapperStyles.base)}>
         <div {...styleX.props(playerNameStyles.base)}>
@@ -27,7 +40,7 @@ function Guess ({index, guessPlayer, answerPlayer}: GuessProps) {
         <div {...styleX.props(rowStyles.base)}>
             <div {...styleX.props(itemStyles.base)}>
               <div {...styleX.props(itemInfoStyles.base, guessPlayer.team === answerPlayer.team && itemInfoStyles.correct)}>
-                <Image src={`/images/${guessPlayer.team}.png`} alt={guessPlayer.team} width={55} height={55}/>
+                <Image src={`/images/${convertTeamNameToEnglish(guessPlayer.team)}.png`} alt={guessPlayer.team} width={55} height={55}/>
               </div>
               <div {...styleX.props(itemTextStyles.base)}>
                 팀

@@ -28,11 +28,16 @@ type HomepageProps = {
 export default function HomePage({ players, errorMessage }: HomepageProps & { errorMessage?: string }) {
   const [error, setError] = useState<string | null>(errorMessage || null);
   const [correct, setCorrect] = useState(false);
+  const [guesses, setGuesses] = useState<Player[]>([]);
   const [answerPlayer, setAnswerPlayer] = useState(players[Math.floor(Math.random() * players.length)]);
+
+  const isCorrect = guesses.length > 0 && guesses[guesses.length - 1].id === answerPlayer.id;
+  const isOverLimit = guesses.length === 10;
 
   const handleRetryButton = () => {
     setCorrect(false);
     setAnswerPlayer(players[Math.floor(Math.random() * players.length)]);
+    setGuesses([]);
     setError(null);
   };
 
@@ -41,6 +46,12 @@ export default function HomePage({ players, errorMessage }: HomepageProps & { er
     height: typeof window !== "undefined" ? window.innerHeight : 0,
   });
   
+  useEffect(() => {
+    if (isCorrect || isOverLimit) {
+      setCorrect(true);
+      window.scroll({ top: 0, left: 0, behavior: "smooth" });
+    }
+  }, [isCorrect, isOverLimit]);
 
   useEffect(() => {
     const updateSize = () => {
@@ -63,7 +74,7 @@ export default function HomePage({ players, errorMessage }: HomepageProps & { er
         <RetryButton handleRetryButton={handleRetryButton} />
         <ContentsWrapper>
           <PlayerImage correct={correct} answerPlayerImageUrl={answerPlayer.image} />
-          <PlayerInput players={players} answerPlayer={answerPlayer} setCorrect={setCorrect} />
+          <PlayerInput players={players} answerPlayer={answerPlayer} guesses={guesses} setGuesses={setGuesses} />
           {error && <div style={{ color: 'red' }}>{error}</div>}
         </ContentsWrapper>
       </AppWrapper>

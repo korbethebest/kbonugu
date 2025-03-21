@@ -13,12 +13,19 @@ type Player = {
   backnumber: string;
   draftyear: number;
   image: string;  
+};
+
+type PlyaerInputProps = {
+  players: Player[];
+  answerPlayer: Player;
+  guesses: Player[];
+  setGuesses: Dispatch<SetStateAction<Player[]>>;
 }
 
-function PlayerInput({players, answerPlayer, setCorrect}: {players: Player[], answerPlayer: Player, setCorrect: Dispatch<SetStateAction<boolean>>}) {
+function PlayerInput({players, answerPlayer, guesses, setGuesses}: PlyaerInputProps) {
   const [inputValue, setInputValue] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
-  const [guesses, setGuesses] = useState<Player[]>([]);
+  const endOfGuessesRef = useRef<HTMLDivElement>(null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -33,21 +40,6 @@ function PlayerInput({players, answerPlayer, setCorrect}: {players: Player[], an
   };
 
   const filteredPlayers = players.filter((player) => player.name.startsWith(inputValue));
-
-  const endOfGuessesRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (guesses. length > 0 && guesses[guesses.length - 1].id === answerPlayer.id || guesses.length === 10) {
-      setCorrect(true);
-      window.scroll({ top: 0, left: 0, behavior: 'smooth' });
-    }
-  }, [guesses, answerPlayer.id, setCorrect]);
-
-  useEffect(() => {
-    if (answerPlayer.id) {
-      setGuesses([]);
-    }
-  }, [answerPlayer]);
 
   useEffect(() => {
     if (!(guesses. length > 0 && guesses[guesses.length - 1].id === answerPlayer.id || guesses.length === 10) && endOfGuessesRef.current) {
