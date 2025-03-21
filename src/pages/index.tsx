@@ -67,7 +67,7 @@ export default function HomePage({ players, errorMessage }: HomepageProps & { er
 
   return (
     <>
-      {correct && <ReactConfetti width={dimensions.width} height={dimensions.height} />}
+      {isCorrect && <ReactConfetti width={dimensions.width} height={dimensions.height} />}
       <AppWrapper>
         {correct && <AnswerAlert playerName={answerPlayer.name}/> }
         <Title />
