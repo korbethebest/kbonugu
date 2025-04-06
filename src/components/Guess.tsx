@@ -1,5 +1,4 @@
 import * as styleX from "@stylexjs/stylex";
-import Image from 'next/image';
 
 type Player = {
   id: number;
@@ -30,7 +29,7 @@ function Guess ({index, guessPlayer, answerPlayer}: GuessProps) {
     };
   
     return teamMap[teamName] || teamName;
-  }
+  };
 
   return (
     <div {...styleX.props(wrapperStyles.base)}>
@@ -40,7 +39,12 @@ function Guess ({index, guessPlayer, answerPlayer}: GuessProps) {
         <div {...styleX.props(rowStyles.base)}>
             <div {...styleX.props(itemStyles.base)}>
               <div {...styleX.props(itemInfoStyles.base, guessPlayer.team === answerPlayer.team && itemInfoStyles.correct)}>
-                <Image src={`/images/${convertTeamNameToEnglish(guessPlayer.team)}.png`} alt={guessPlayer.team} width={55} height={55}/>
+              <img
+                src={`/images/${convertTeamNameToEnglish(guessPlayer.team)}.png`}
+                width={55}
+                height={55}
+                alt={guessPlayer.team}
+              />
               </div>
               <div {...styleX.props(itemTextStyles.base)}>
                 팀

@@ -1,5 +1,4 @@
 import * as styleX from "@stylexjs/stylex";
-import Image from 'next/image';
 import { type Dispatch, type SetStateAction, useEffect, useRef, useState } from "react";
 
 import Guess from "./Guess";
@@ -41,6 +40,19 @@ function PlayerInput({players, answerPlayer, guesses, setGuesses}: PlyaerInputPr
 
   const filteredPlayers = players.filter((player) => player.name.startsWith(inputValue));
 
+  const convertTeamNameToEnglish = (teamName: string): string => {
+    const teamMap: Record<string, string> = {
+      "기아": "KIA",
+      "두산": "DOOSAN",
+      "롯데": "LOTTE",
+      "삼성": "SAMSUNG",
+      "키움": "KIWOOM",
+      "한화": "HANWHA",
+    };
+  
+    return teamMap[teamName] || teamName;
+  };
+
   useEffect(() => {
     if (!(guesses. length > 0 && guesses[guesses.length - 1].id === answerPlayer.id || guesses.length === 10) && endOfGuessesRef.current) {
       endOfGuessesRef.current.scrollIntoView({ behavior: 'smooth' });
@@ -74,7 +86,7 @@ function PlayerInput({players, answerPlayer, guesses, setGuesses}: PlyaerInputPr
             >
               <div {...styleX.props(inputContentStyles.base)}>
                 <div {...styleX.props(inputEachContentStyles.base)}>
-                <Image src={`/images/${eachPlayer.team}.png`} alt={eachPlayer.team} width={40} height={40}/>
+                <img src={`/images/${convertTeamNameToEnglish(eachPlayer.team)}.png`} alt={eachPlayer.team} width={40} height={40}/>
                 </div>
                 <div {...styleX.props(inputEachContentStyles.base)}>{eachPlayer.name}</div>
                 <div {...styleX.props(inputEachContentStyles.base)}>{eachPlayer.position}</div>
