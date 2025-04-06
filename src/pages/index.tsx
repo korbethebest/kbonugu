@@ -42,8 +42,8 @@ export default function HomePage({ players, errorMessage }: HomepageProps & { er
   };
 
   const [dimensions, setDimensions] = useState({
-    width: typeof window !== "undefined" ? window.innerWidth : 0,
-    height: typeof window !== "undefined" ? window.innerHeight : 0,
+    width: 0,
+    height: 0,
   });
   
   useEffect(() => {
@@ -54,15 +54,12 @@ export default function HomePage({ players, errorMessage }: HomepageProps & { er
   }, [isCorrect, isOverLimit]);
 
   useEffect(() => {
-    const updateSize = () => {
+    if (typeof window !== "undefined") {
       setDimensions({
         width: window.innerWidth,
         height: window.innerHeight,
       });
-    };
-
-    window.addEventListener("resize", updateSize);
-    return () => window.removeEventListener("resize", updateSize);
+    }
   }, []);
 
   return (
