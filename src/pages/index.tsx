@@ -5,6 +5,7 @@ import ReactConfetti from 'react-confetti';
 import AnswerAlert from '../components/AnswerAlert';
 import AppWrapper from "../components/AppWrapper";
 import ContentsWrapper from "../components/ContentWrapper";
+import HelpButton from "../components/HelpButton";
 import PlayerImage from "../components/PlayerImage";
 import PlayerInput from "../components/PlayerInput";
 import RetryButton from '../components/RetryButton';
@@ -74,6 +75,7 @@ export default function HomePage({ players, errorMessage }: HomepageProps & { er
           <PlayerInput players={players} answerPlayer={answerPlayer} guesses={guesses} setGuesses={setGuesses} />
           {error && <div style={{ color: 'red' }}>{error}</div>}
         </ContentsWrapper>
+        <HelpButton />
       </AppWrapper>
     </>
   );
