@@ -128,6 +128,7 @@ const inputStyles = styleX.create({
     border: "none",
     borderRadius: 6,
     boxSizing: "border-box",
+    fontSize: "20px",
   },
 });
 
@@ -188,6 +189,8 @@ const inputEachContentStyles = styleX.create({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+    fontSize: "20px",
+    color: "black"
   }
 });
 

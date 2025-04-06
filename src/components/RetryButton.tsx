@@ -22,6 +22,7 @@ const retryButtonStyles = styleX.create({
     borderRadius: "15px",
     transition: "background-color 0.3s ease",
     cursor: "pointer",
+    fontSize: "20px",
 
     ":hover": {
         backgroundColor: "#0056b3", 
