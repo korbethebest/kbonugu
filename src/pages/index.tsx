@@ -5,7 +5,7 @@ import ReactConfetti from 'react-confetti';
 import AnswerAlert from '../components/AnswerAlert';
 import AppWrapper from "../components/AppWrapper";
 import ContentsWrapper from "../components/ContentWrapper";
-import HelpButton from "../components/HelpButton";
+import { HelpButton } from "../components/Help";
 import PlayerImage from "../components/PlayerImage";
 import PlayerInput from "../components/PlayerInput";
 import RetryButton from '../components/RetryButton';
