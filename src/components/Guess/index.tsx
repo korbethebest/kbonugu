@@ -37,10 +37,10 @@ function Guess({ index, guessPlayer, answerPlayer }: GuessProps) {
         />
         
         <GuessItem 
-          value={String(guessPlayer.age)}
-          isCorrect={guessPlayer.age === answerPlayer.age}
+          value={String(new Date().getFullYear() - guessPlayer.birthyear)}
+          isCorrect={guessPlayer.birthyear === answerPlayer.birthyear}
           label="나이"
-          direction={getDirectionArrow(guessPlayer.age, answerPlayer.age)}
+          direction={getDirectionArrow(new Date().getFullYear() - guessPlayer.birthyear, new Date().getFullYear() - answerPlayer.birthyear)}
         />
       </div>
       

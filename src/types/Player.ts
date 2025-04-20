@@ -3,7 +3,7 @@ export type Player = {
   name: string;
   team: string;
   position: string;
-  age: number;
+  birthyear: number;
   backnumber: string;
   draftyear: number;
   image: string;  

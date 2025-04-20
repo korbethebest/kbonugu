@@ -2,6 +2,7 @@ import type { GetStaticProps } from 'next';
 import { useEffect, useState } from 'react';
 import ReactConfetti from 'react-confetti';
 
+import type { Player } from '@/types';
 import AnswerAlert from '../components/AnswerAlert';
 import AppWrapper from "../components/AppWrapper";
 import ContentsWrapper from "../components/ContentWrapper";
@@ -10,17 +11,6 @@ import PlayerImage from "../components/PlayerImage";
 import PlayerInput from "../components/PlayerInput";
 import RetryButton from '../components/RetryButton';
 import Title from "../components/Title";
-
-type Player = {
-  id: number;
-  name: string;
-  team: string;
-  position: string;
-  age: number;
-  backnumber: string;
-  draftyear: number;
-  image: string;  
-}
 
 type HomepageProps = {
   players: Player[];
