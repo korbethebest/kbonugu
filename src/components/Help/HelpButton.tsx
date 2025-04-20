@@ -5,7 +5,7 @@ import HelpModal from "./HelpModal";
 import { buttonStyles } from './styles';
 
 const HelpButton = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(true);
 
   const openModal = () => {
     setIsModalOpen(true);
