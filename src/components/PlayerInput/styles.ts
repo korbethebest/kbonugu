@@ -3,6 +3,8 @@ import * as styleX from "@stylexjs/stylex";
 export const inputWrapperStyles = styleX.create({
   base: {
     minWidth: 320,
+    width: "90%",
+    maxWidth: 500,
     height: 60,
     display: "flex",
     flexDirection: "column",
@@ -14,7 +16,9 @@ export const inputWrapperStyles = styleX.create({
 
 export const inputStyles = styleX.create({
   base: {
-    width: 320,
+    width: "100%",
+    minWidth: 320,
+    maxWidth: 500,
     minHeight: 50,
     padding: "0px 10px",
     marginBottom: "25px",
@@ -22,12 +26,14 @@ export const inputStyles = styleX.create({
     borderRadius: 6,
     boxSizing: "border-box",
     fontSize: "20px",
+    appearance: "none", /* Removes default styling on some browsers */
   },
 });
 
 export const dropDownWrapperStyles = styleX.create({
   base: {
     maxHeight: 200,
+    width: "100%",
     position: "absolute",
     top: "100%",
     left: 0,
@@ -39,6 +45,7 @@ export const dropDownWrapperStyles = styleX.create({
     borderRadius: 6,
     overflowX: "hidden",
     overflowY: "auto",
+    zIndex: 10, /* Ensure dropdown appears above other elements */
     "::-webkit-scrollbar": {
       width: 8,
       borderRadius: 6,
@@ -53,7 +60,7 @@ export const dropDownWrapperStyles = styleX.create({
 
 export const dropDownButtonStyles = styleX.create({
   base: {
-    width: 320,
+    width: "100%",
     minHeight: 50,
     paddingLeft: 10,
     paddingRight: 10,
@@ -63,7 +70,8 @@ export const dropDownButtonStyles = styleX.create({
     backgroundColor: "white",
     ":not(:last-child)": {
       borderBottom: "1px solid gray",
-    }
+    },
+    touchAction: "manipulation", /* Improves touch experience */
   },
 });
 

@@ -4,6 +4,7 @@
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	-webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -16,6 +17,7 @@ body {
 	height: 100vh;
 	background-color: #007aff;
 	font-weight: 400;
+	touch-action: manipulation;
 }
 
 #root {
@@ -25,6 +27,17 @@ body {
 	justify-content: center;
 	align-items: center;
 	padding-bottom: 200px;	
+}
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+	#root {
+		padding-bottom: 100px;
+	}
+
+	input {
+		font-size: 16px !important; /* Prevents iOS zoom */
+	}
 }
 
 @font-face {
