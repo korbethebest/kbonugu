@@ -30,21 +30,22 @@ export const inputStyles = styleX.create({
   },
 });
 
+export const dropDownEmptyWrapperStyles = styleX.create({
+  base: {
+    marginTop: 8,
+    marginBottom: 25,
+    width: "100%",
+    maxHeight: 200,
+  },
+});
+
 export const dropDownWrapperStyles = styleX.create({
   base: {
+    marginTop: 8,
+    marginBottom: 25,
     maxHeight: 200,
     width: "100%",
-    position: "absolute",
-    top: "100%",
-    left: 0,
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    backgroundColor: "white",
-    border: "none",
     borderRadius: 6,
-    overflowX: "hidden",
-    overflowY: "auto",
     zIndex: 10, /* Ensure dropdown appears above other elements */
     "::-webkit-scrollbar": {
       width: 8,
@@ -58,12 +59,29 @@ export const dropDownWrapperStyles = styleX.create({
   },
 });
 
+export const dropDownButtonWrapperStyles = styleX.create({
+  base: {
+    marginTop: 8,
+    marginBottom: 25,
+    width: "100%",
+    height: 200,
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    borderRadius: 6,
+    overflowX: "hidden",
+    overflowY: "auto",
+  },
+});
+
 export const dropDownButtonStyles = styleX.create({
   base: {
     width: "100%",
     minHeight: 50,
-    paddingLeft: 10,
-    paddingRight: 10,
+    padding: "10px 0px",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
     border: "none",
     boxSizing: "border-box",
     textAlign: "left",
@@ -100,4 +118,11 @@ export const gapStyles = styleX.create({
     width: "100%",
     minHeight: 25,
   }
+});
+
+export const inputAreaWrapperStyles = styleX.create({
+  base: {
+    position: "relative",
+    width: "100%",
+  },
 });

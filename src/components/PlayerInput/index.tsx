@@ -5,7 +5,7 @@ import type { Player } from "../../types";
 import { GuessList } from "./GuessList";
 import { PlayerDropdown } from "./PlayerDropdown";
 import { SearchInput } from "./SearchInput";
-import { gapStyles, inputWrapperStyles } from "./styles";
+import { dropDownEmptyWrapperStyles, inputAreaWrapperStyles, inputWrapperStyles } from "./styles";
 
 type PlayerInputProps = {
   players: Player[];
@@ -46,25 +46,23 @@ function PlayerInput({ players, answerPlayer, guesses, setGuesses }: PlayerInput
 
   return (
     <div {...styleX.props(inputWrapperStyles.base)}>
-      <SearchInput 
-        value={inputValue}
-        onChange={handleInputChange}
-      />
-      
-      {showDropdown && filteredPlayers.length > 0 && (
-        <PlayerDropdown 
-          players={filteredPlayers}
-          onSelect={handlePlayerSelect}
-        />
-      )}
-      
-      <div {...styleX.props(gapStyles.base)}/>
-      
       <GuessList 
         guesses={guesses}
         answerPlayer={answerPlayer}
         endOfGuessesRef={endOfGuessesRef as React.RefObject<HTMLDivElement>}
       />
+      <div {...styleX.props(inputAreaWrapperStyles.base)}>
+        <SearchInput 
+          value={inputValue}
+          onChange={handleInputChange}
+        />
+        {showDropdown && filteredPlayers.length > 0 && (
+          <PlayerDropdown 
+            players={filteredPlayers}
+            onSelect={handlePlayerSelect}
+          />
+        )}
+      </div>
     </div>
   );
 }
