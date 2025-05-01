@@ -30,47 +30,36 @@ export const inputStyles = styleX.create({
   },
 });
 
-export const dropDownEmptyWrapperStyles = styleX.create({
-  base: {
-    marginTop: 8,
-    marginBottom: 25,
-    width: "100%",
-    maxHeight: 200,
-  },
-});
-
 export const dropDownWrapperStyles = styleX.create({
   base: {
-    marginTop: 8,
-    marginBottom: 25,
-    maxHeight: 200,
-    width: "100%",
-    borderRadius: 6,
-    zIndex: 10, /* Ensure dropdown appears above other elements */
-    "::-webkit-scrollbar": {
-      width: 8,
-      borderRadius: 6,
-      backgroundColor: "#E0E0E0"
-    },
-    "::-webkit-scrollbar-thumb": {
-      borderRadius: 6,
-      backgroundColor: "#606060",
-    },
+    position: 'absolute',
+    top: '100%',       // right below input
+    left: 0,
+    width: '100%',
+    border: 'none',
+    borderRadius: 8,
+    zIndex: 10,        // highest
   },
 });
 
 export const dropDownButtonWrapperStyles = styleX.create({
   base: {
-    marginTop: 8,
-    marginBottom: 25,
-    width: "100%",
-    height: 200,
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    borderRadius: 6,
-    overflowX: "hidden",
-    overflowY: "auto",
+    width: '100%',
+    maxHeight: "200px", // maximum height 200px
+    overflowY: 'auto', // allow scrolling
+    overflowX: 'hidden',
+    backgroundColor: 'white',
+    border: 'none',
+    borderRadius: 8,
+    '::-webkit-scrollbar': {
+      width: 8,
+      borderRadius: 6,
+      backgroundColor: '#E0E0E0',
+    },
+    '::-webkit-scrollbar-thumb': {
+      borderRadius: 6,
+      backgroundColor: '#606060',
+    },
   },
 });
 
@@ -78,10 +67,8 @@ export const dropDownButtonStyles = styleX.create({
   base: {
     width: "100%",
     minHeight: 50,
-    padding: "10px 0px",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
+    paddingLeft: 10,
+    paddingRight: 10,
     border: "none",
     boxSizing: "border-box",
     textAlign: "left",

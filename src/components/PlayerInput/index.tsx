@@ -5,7 +5,7 @@ import type { Player } from "../../types";
 import { GuessList } from "./GuessList";
 import { PlayerDropdown } from "./PlayerDropdown";
 import { SearchInput } from "./SearchInput";
-import { dropDownEmptyWrapperStyles, inputAreaWrapperStyles, inputWrapperStyles } from "./styles";
+import { inputAreaWrapperStyles, inputWrapperStyles } from "./styles";
 
 type PlayerInputProps = {
   players: Player[];
