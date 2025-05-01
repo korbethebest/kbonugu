@@ -11,6 +11,7 @@ export const inputWrapperStyles = styleX.create({
     alignItems: "center",
     gap: 10,
     position: "relative",
+    paddingTop: "25px"
   },
 });
 
