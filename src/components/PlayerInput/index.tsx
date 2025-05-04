@@ -34,15 +34,16 @@ function PlayerInput({ players, answerPlayer, guesses, setGuesses }: PlayerInput
   const filteredPlayers = players.filter((player) => 
     player.name.startsWith(inputValue)
   );
-  
+
+  const isGameOver = guesses.length > 0 && guesses[guesses.length - 1].id === answerPlayer.id;
+  const isMaxGuesses = guesses.length === 10;
+  const isGameActive = !isGameOver && !isMaxGuesses;
+
   useEffect(() => {
-    const isGameOver = guesses.length > 0 && guesses[guesses.length - 1].id === answerPlayer.id;
-    const isMaxGuesses = guesses.length === 10;
-    
-    if (!isGameOver && !isMaxGuesses && endOfGuessesRef.current) {
+    if (isGameActive && endOfGuessesRef.current) {
       endOfGuessesRef.current.scrollIntoView({ behavior: 'smooth' });
     }
-  }, [guesses, answerPlayer.id]);
+  }, [isGameActive]);
 
   return (
     <div {...styleX.props(inputWrapperStyles.base)}>
@@ -51,18 +52,20 @@ function PlayerInput({ players, answerPlayer, guesses, setGuesses }: PlayerInput
         answerPlayer={answerPlayer}
         endOfGuessesRef={endOfGuessesRef as React.RefObject<HTMLDivElement>}
       />
-      <div {...styleX.props(inputAreaWrapperStyles.base)}>
-        <SearchInput 
-          value={inputValue}
-          onChange={handleInputChange}
-        />
-        {showDropdown && filteredPlayers.length > 0 && (
-          <PlayerDropdown 
-            players={filteredPlayers}
-            onSelect={handlePlayerSelect}
+      {isGameActive && (
+        <div {...styleX.props(inputAreaWrapperStyles.base)}>
+          <SearchInput 
+            value={inputValue}
+            onChange={handleInputChange}
           />
-        )}
-      </div>
+          {showDropdown && filteredPlayers.length > 0 && (
+            <PlayerDropdown 
+              players={filteredPlayers}
+              onSelect={handlePlayerSelect}
+            />
+          )}
+        </div>
+      )}
     </div>
   );
 }
